@@ -1,8 +1,13 @@
 import React from 'react'
+import ButtonList from './ButtonList'
+import VideoContainer from './VideoContainer'
 
 const Container = () => {
   return (
-    <div>Container</div>
+    <div>
+      <ButtonList />
+      <VideoContainer/>
+    </div>
   )
 }
 
