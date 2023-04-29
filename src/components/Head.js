@@ -3,12 +3,20 @@ import logo from "../assets/YoutubeLogo.png"
 import { GiHamburgerMenu } from 'react-icons/gi';
 import {FaUserAlt} from 'react-icons/fa';
 import {BsSearch} from 'react-icons/bs'
+import { useDispatch } from 'react-redux';
+import { toggleMenu } from '../utils/toggleSlice';
 
 const Head = () => {
+
+  const dispatch = useDispatch();
+  const toggleMenuHandler = ()=>{
+      dispatch(toggleMenu());
+  }
+
   return (
     <div className='flex justify-between p-3 content-center shadow-xl'>
         <div className='flex justify-between content-center'>
-          <GiHamburgerMenu className='mt-2 cursor-pointer'/> 
+          <GiHamburgerMenu className='mt-2 cursor-pointer' onClick={toggleMenuHandler}/> 
           <img alt='logo' src={logo} className='h-8 mx-4 cursor-pointer' />
         </div>
         <div>
