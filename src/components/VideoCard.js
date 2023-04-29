@@ -19,7 +19,7 @@ const VideoCard = ({info}) => {
     <div className='w-64 p-1 shadow-xl mx-5 my-2 flex flex-col'>
         <img src={thumbnails.medium.url} alt="thumbnail" />
         <ul>
-            <li className='font-bold line-clamp-2 font-mono text-gray-900'>{title}</li>
+            <li className='font-semibold line-clamp-2 font-mono text-gray-900'>{title}</li>
             <li className='font-mono text-sm text-gray-600'>{channelTitle}</li>
             <li className='font-mono text-sm text-gray-600'>{totalView(viewCount)} views</li>
         </ul>

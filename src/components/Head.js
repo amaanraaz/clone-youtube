@@ -21,7 +21,7 @@ const Head = () => {
         </div>
         <div>
           <input type='text' className='w-96 border-2 border-gray-400 rounded-l-2xl p-[2px]' placeholder='Search' />
-          <button className='border-2 border-gray-400 rounded-r-2xl pt-[4.5px] pb-[7px] pr-4 border-l-0 bg-slate-500'><BsSearch className='ml-2'/></button>
+          <button className='border-2 border-gray-400 rounded-r-2xl pt-[4.5px] pb-[7px] pr-4 border-l-0 bg-slate-300'><BsSearch className='ml-2'/></button>
         </div>
         <div>
           <FaUserAlt />
