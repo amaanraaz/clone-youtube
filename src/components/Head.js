@@ -17,7 +17,7 @@ const Head = () => {
     <div className='flex justify-between p-3 content-center shadow-xl'>
         <div className='flex justify-between content-center'>
           <GiHamburgerMenu className='mt-2 cursor-pointer' onClick={toggleMenuHandler}/> 
-          <img alt='logo' src={logo} className='h-8 mx-4 cursor-pointer' />
+          <a href='/'><img alt='logo' src={logo} className='h-8 mx-4 cursor-pointer' /></a>
         </div>
         <div>
           <input type='text' className='w-96 border-2 border-gray-400 rounded-l-2xl p-[2px]' placeholder='Search' />
