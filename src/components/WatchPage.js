@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { closeMenu } from '../utils/toggleSlice';
+import { closeAll } from '../utils/toggleSlice';
 import { useSearchParams } from 'react-router-dom';
 
 const WatchPage = () => {
@@ -8,7 +8,7 @@ const WatchPage = () => {
     //usesearchparams is used for getting details of queries of url which cant be done by useparams as it searches after / only
     const [params] = useSearchParams();
     useEffect(()=>{
-        dispatch(closeMenu());
+        dispatch(closeAll());
     },[])
   return (
     <div className='px-5'>

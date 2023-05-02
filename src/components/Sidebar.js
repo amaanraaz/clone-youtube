@@ -3,15 +3,17 @@ import { FaHome } from 'react-icons/fa';
 import {MdExplore,MdSubscriptions,MdVideoLibrary} from 'react-icons/md'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MainSidebar from './MainSidebar';
 
 const Sidebar = () => {
   const isMenuOpen = useSelector(store=>store.toggle.isMenuOpen);
-  if(!isMenuOpen) return null;
+  const isSideBarOpen = useSelector(store=>store.toggle.isSideMenuOpen);
+  if(isMenuOpen){
   return (
-    <div className='w-44 shadow-xl p-3 cursor-pointer'>
+    <div className='w-44 shadow-xl p-3'>
         <ul>
           <Link to={"/"}>
-          <div className='flex items-center'>
+          <div className='flex items-center cursor-pointer'>
             <FaHome />
             <li className='mx-2 font-mono'>Home</li> 
           </div>
@@ -43,8 +45,9 @@ const Sidebar = () => {
           <li className='mx-2 font-mono'>Learning</li> 
         </ul>
     </div>
-    
   )
+  }
+  if(isSideBarOpen) return (<MainSidebar />);
 }
 
 export default Sidebar
