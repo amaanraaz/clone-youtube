@@ -14,7 +14,7 @@ const MainSidebar = () => {
 
     return (
         
-    <div className='flex mt-10'>
+    <div className='fixed mt-2 flex'>
         <ul>
           <Link to={"/"}>
           <div className='flex flex-col items-center cursor-pointer'>

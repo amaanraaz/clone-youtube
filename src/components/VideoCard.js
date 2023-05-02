@@ -16,7 +16,7 @@ const VideoCard = ({info}) => {
     }
 
   return (
-    <div className='w-64 p-1 shadow-xl mx-5 my-2 flex flex-col'>
+    <div className='w-64 p-1 shadow-xl my-2 flex flex-col'>
         <img src={thumbnails.medium.url} alt="thumbnail" />
         <ul>
             <li className='font-semibold line-clamp-2 font-mono text-gray-900'>{title}</li>
