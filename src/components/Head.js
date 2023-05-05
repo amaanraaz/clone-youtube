@@ -5,13 +5,15 @@ import {FaUserAlt} from 'react-icons/fa';
 import {BsSearch} from 'react-icons/bs'
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/toggleSlice';
-import { YOUTUBE_SEARCH_API } from '../utils/constants';
+import { YOUTUBE_SEARCH_API, YOUTUBE_SEARCH_SUGGESTIONS_API } from '../utils/constants';
+import { useNavigate } from 'react-router-dom';
 
 const Head = () => {
   const [searchQuery,setSearchQuery] = useState("");
   const [suggestions,setSuggestions] = useState([]);
   const [showSuggestions,setShowSuggestions] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const toggleMenuHandler = ()=>{
       dispatch(toggleMenu());
   }
@@ -30,8 +32,11 @@ const Head = () => {
     const data = await fetch(YOUTUBE_SEARCH_API+searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
-    console.log(searchQuery,json[1]);
   }
+
+  // const handleSearch = (s)=>{
+  //   console.log(s);
+  // }
 
   return (
     <div className='sticky top-0 bg-white flex justify-between p-3 content-center shadow-xl'>
@@ -46,11 +51,11 @@ const Head = () => {
           onBlur={()=>setShowSuggestions(false)}
           />
           <button className='border-2 border-gray-400 rounded-r-2xl pt-[4.5px] pb-[7px] pr-4 border-l-0 bg-slate-300'><BsSearch className='ml-2'/></button>
-          {showSuggestions && suggestions.length>0 && <div className='bg-white fixed w-96 pt-2 pb-4 px-4 rounded-xl'>
+          {showSuggestions && suggestions.length>0 && <div className='bg-white fixed w-96 pt-2 pb-4 px-1 rounded-xl border-gray-200 shadow-2xl mt-1'>
             <ul>
             {
               suggestions.map((s)=>(
-                <li className='flex items-center '><BsSearch className='mx-2'/> {s}</li>
+                 <li key={s} className='flex cursor-default items-center mt-1 hover:bg-slate-200 font-semibold' onMouseDown={()=>(navigate('/search?search_query='+s))}><BsSearch className='mx-2'/> {s}</li>
               ))
             }
             </ul>

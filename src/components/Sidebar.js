@@ -10,7 +10,7 @@ const Sidebar = () => {
   const isSideBarOpen = useSelector(store=>store.toggle.isSideMenuOpen);
   if(isMenuOpen){
   return (
-    <div className='fixed w-44 shadow-xl p-3'>
+    <div className=' w-44 shadow-xl p-3'>
         <ul>
           <Link to={"/"}>
           <div className='flex items-center cursor-pointer'>
