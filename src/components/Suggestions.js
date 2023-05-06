@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { closeAll } from '../utils/toggleSlice';
 import { YOUTUBE_SEARCH_SUGGESTIONS_API } from '../utils/constants';
+import SuggestionVideo from './SuggestionVideo';
 
 const Suggestions = () => {
   const dispatch = useDispatch();
@@ -14,18 +15,25 @@ const Suggestions = () => {
     },[]);
     useEffect(()=>{
       getSuggestions();
-    },[])
+    },[params])
 
     const getSuggestions = async()=>{
       const data = await fetch(YOUTUBE_SEARCH_SUGGESTIONS_API+params.get("search_query"));
       const json = await data.json();
-      setVideos(json.items)
       console.log(json);
+      setVideos(json.items)
     }
-
   return (
-    <div>Suggestions</div>
+    <div>
+      {
+        videos.map((video)=>(
+          <Link to={"/watch?v=" + video.id.videoId} key={video.id.videoId}>
+            <SuggestionVideo data={video}/>
+          </Link>
+        ))}
+    </div>
   )
+
 }
 
 export default Suggestions
