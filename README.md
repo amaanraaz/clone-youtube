@@ -4,6 +4,6 @@
 ### Snapshot:
 ![Home](src/assets/HomePage.jpg)
 
-[Live]()
+[Live](https://clone-youtube-neon.vercel.app/)
 
-[Github]()
+[Github](https://github.com/amaanraaz/clone-youtube)
