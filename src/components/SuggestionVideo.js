@@ -19,7 +19,7 @@ const SuggestionVideo = ({data}) => {
         <div className='ml-3'>
         <h1 className='font-mono text-xl font-bold'>{data.snippet.title}</h1>
         <h1 className='mt-5 font-mono text-lg text-gray-600'>{data.snippet.channelTitle}</h1>
-        <h1 className='mt-3 font-mono text-lg text-gray-600'>{data.snippet.description}</h1>
+        <h1 className='mt-3 text-base text-gray-600'>{data.snippet.description}</h1>
         </div>
     </div>
   )
