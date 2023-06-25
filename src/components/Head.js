@@ -3,10 +3,11 @@ import logo from "../assets/YoutubeLogo.png"
 import { GiHamburgerMenu } from 'react-icons/gi';
 import {FaUserAlt} from 'react-icons/fa';
 import {BsSearch} from 'react-icons/bs'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../utils/toggleSlice';
 import { YOUTUBE_SEARCH_API, YOUTUBE_SEARCH_SUGGESTIONS_API } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
+import { cacheResults } from '../utils/searchSlice';
 
 const Head = () => {
   const [searchQuery,setSearchQuery] = useState("");
@@ -14,13 +15,19 @@ const Head = () => {
   const [showSuggestions,setShowSuggestions] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const searchCache = useSelector((store)=>store.search);
   const toggleMenuHandler = ()=>{
       dispatch(toggleMenu());
   }
   useEffect(()=>{
     // console.log(searchQuery);
     const timer = setTimeout(()=>{
-      getSearchSuggestion();
+      if(searchCache[searchQuery]){
+        setSuggestions(searchCache[searchQuery]);
+      }
+      else{
+        getSearchSuggestion();
+      }
     },100)
 
     return()=>{
@@ -32,6 +39,10 @@ const Head = () => {
     const data = await fetch(YOUTUBE_SEARCH_API+searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
+    // update cache
+    dispatch(cacheResults({
+      [searchQuery]:json[1]
+    }))
   }
 
   // const handleSearch = (s)=>{
